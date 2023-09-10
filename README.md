@@ -89,7 +89,7 @@ curl http://localhost:3000/getUsers
 Example request to addUser using curl:
 
 ```bash
-curl -X POST -H "Content-Type: application/json" -d '{"name": "John Doe", "email": "john@example.com", "age":25}' http://localhost:3000/addUser
+curl -X POST -H "Content-Type: application/json" -d '{"name": "John Doe", "email": "john@example.com", "age": 25}' http://localhost:3000/addUser
 ```
 
 ## License

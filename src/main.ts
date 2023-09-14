@@ -5,8 +5,6 @@ import {createClient} from "redis";
 
 const app = express();
 const client = createClient();
-client.on('error', err => console.log('Redis Client Error', err));
-client.connect();
 
 interface IUser {
     name: string;
@@ -64,6 +62,10 @@ app.post("/addUser", express.json(), (req, res) => {
     res.sendStatus(200);
 });
 
-ViteExpress.listen(app, 3000, () =>
-    console.log("Server is listening on port 3000...")
+ViteExpress.listen(app, 3000, async () => {
+        console.log("Server is listening on port 3000...");
+        client.on('error', err => console.log('Redis Client Error', err));
+        await client.connect();
+        console.log('Redis Client Connected')
+    }
 );

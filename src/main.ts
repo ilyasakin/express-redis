@@ -49,16 +49,15 @@ app.get("/getUsers", async (_, res) => {
 app.post("/addUserWithoutCache", express.json(), (req, res) => {
     const {name, age, email} = req.body;
     users.push({name, age, email});
-    // client.set('users', JSON.stringify(users));
 
     res.sendStatus(200);
 });
 
-app.post("/addUser", express.json(), (req, res) => {
+app.post("/addUser", express.json(), async (req, res) => {
     const {name, age, email} = req.body;
     users.push({name, age, email});
-    client.set('users', JSON.stringify(users));
-    
+    await client.set('users', JSON.stringify(users));
+
     res.sendStatus(200);
 });
 

@@ -1,10 +1,10 @@
-import express from "express";
+import express, {Express} from "express";
 import ViteExpress from "vite-express";
 import {sleep} from "./helper";
-import {createClient} from "redis";
+import {createClient, RedisClientType} from "redis";
 
-const app = express();
-const client = createClient();
+const app: Express = express();
+const client: RedisClientType = createClient();
 
 interface IUser {
     name: string;
